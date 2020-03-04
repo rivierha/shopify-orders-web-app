@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomMaterialModule } from './core/material.module';
 import {FormsModule} from '@angular/forms';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

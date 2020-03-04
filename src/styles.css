@@ -1,2 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body {
+    background-color: whitesmoke;
+    margin: 0px;
+    height: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.mat-card {
+    box-sizing: border-box !important;
+    flex: 1 1 50% !important;
+    max-width: 40% !important;
+    margin-top: 8%;
+}
+
+.mat-card.mat-card-header{
+    color: rgb(22, 3, 189);
+}
+
+.mat-card-content{
+   font-size: medium;
+}
+
+.mat-button{
+    font-size: medium;
+}
