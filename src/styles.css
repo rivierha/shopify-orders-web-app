@@ -8,19 +8,24 @@ html, body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.mat-card {
+ .navbar{
+    position: fixed;
+    top: 0px;
+    z-index: 999;
+    max-height: 10vh;
+}
+.Login_Form {
     box-sizing: border-box !important;
     flex: 1 1 50% !important;
     max-width: 40% !important;
-    margin-top: 8%;
+    margin-top: 20vh;
 }
 
+.item {
+    margin: 1rem;
+}
 .mat-card.mat-card-header{
     color: rgb(22, 3, 189);
-}
-
-.mat-card-content{
-   font-size: medium;
 }
 
 .mat-button{

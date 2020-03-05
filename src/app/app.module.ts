@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomMaterialModule } from './core/material.module';
 import {FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     BrowserAnimationsModule,
     FormsModule,
     CustomMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

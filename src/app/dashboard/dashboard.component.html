@@ -1,1 +1,31 @@
-<p>dashboard works!</p>
+<div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0" class="head">
+    <div *ngIf="noOrder()" style="margin: 200px; color: rgb(37, 1, 194);;">
+        <h1>No orders received yet!!</h1>
+    </div>
+    <mat-card class="item" fxFlex="0 1 calc(25% - 32px)"
+        *ngFor="let test of tests | paginate: { itemsPerPage: count, currentPage: p }">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title style="color: rgb(0, 69, 196); font-weight: bold;">
+                Order: {{test.id}}
+            </mat-card-title>
+            <mat-card-subtitle style="color: rgb(0, 69, 196); font-weight: bold;">ITEM NAME: {{test.name}}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <img class="image" mat-card-image src="https://htmlemail.io/img/blog-shopify.jpg" alt="Photo of a Shiba Inu">
+           
+            <mat-card-content>
+                <p>NAME: {{test.name}}</p>
+                <p>GENDER: {{test.gender}}</p>
+                <p>PHONENO: {{test.phoneno}}</p>
+                <p>EMAIL: {{test.email}}</p>
+                <p>NATIONALITY: {{test.nationality}}</p>
+            </mat-card-content>
+            <mat-card-actions fxLayoutAlign="center center">
+                <button mat-raised-button (click)="login()">View Order Details</button>
+            </mat-card-actions>
+    </mat-card>
+</div>
+<div fxLayout="column" fxLayoutAlign="center center">
+    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+</div>
