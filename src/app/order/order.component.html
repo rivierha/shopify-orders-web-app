@@ -1,78 +1,95 @@
 <p style="margin-top: 150px;"></p>
-<mat-card style="padding: 20px;margin: 30px;">
-<div 
-  gdAreas="header header | side content | footer footer"
-  gdGap="16px"
-  gdRows="auto auto auto">
-  <div gdArea="header">
-   <h1 style="color: rgb(107, 106, 106);"> Order #1</h1>
-   
-   </div>
-  <div gdArea="side">
-    <mat-card>
-        <h3 style="color: rgb(3, 3, 223);">Products</h3>
-        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">
-
-        <div>Id: </div>
-        <div>Title</div>
-        <div>Quantity</div>
-        <div>Price</div>
-        <div>Discount</div>
-        <mat-divider style="margin-top: 20px; margin-bottom: 20px;" [inset]="true"></mat-divider>
-
-        <div>Id: </div>
-        <div>Title</div>
-        <div>Quantity</div>
-        <div>Price</div>
-        <div>Discount</div>
-        <mat-divider style="margin-top: 20px; margin-bottom: 20px;" [inset]="true"></mat-divider>
-        <div>Total Amount: </div>
-        <div>Total Discounts: </div>
+<mat-card style="margin: 30px;">
+  <div gdAreas="header header | side content | footer footer" gdGap="16px" gdRows="auto auto auto">
+    <div gdArea="header">
+      <h1 style="color: rgb(107, 106, 106);"> Order #1</h1>
 
     </div>
-
-    </mat-card>
-    
-   </div>
-   
-  <div gdArea="content">
-
-    <mat-card>
-        <h3 style="color: rgb(3, 3, 223);">Customer Information</h3>
-        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">
-          
-        <div>NAME: </div>
-        <p>PHONE:   <button mat-stroked-button color="primary">Update</button>
-        </p>
-        <p>EMAIL:   <button mat-stroked-button color="primary">Update</button>
-        </p>
-        <p>NATIONALITY:</p>
-        </div>
-
-    </mat-card>
-
-  </div>
-  <div gdArea="footer">
+    <div gdArea="side">
       <mat-card>
-    <h3 style="color: rgb(3, 3, 223);">Address Details</h3>
-    <div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-        <div fxLayout="column" fxFlex="0 1 calc(50% - 32px)" fxLayoutAlign="start start">
-            
-            <p style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">Billing Address</p>
-            <ul>
-                <li  style="font-weight: bold;font-size: 15px; color: rgb(109, 107, 107)">Name</li>
-                <li>Name</li><li>Name</li><li>Name</li><li>Name</li><li>Name</li>
-            </ul>
-        </div>
-        <mat-divider [vertical]="true"></mat-divider>
+        <h3 style="color: rgb(3, 3, 223);">Products</h3>
+        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;" *ngFor="let item of items">
 
-        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;" fxFlex="0 1 calc(50% - 32px)">
-            
-            <p>Shipping Address</p>
-
+          <div>Id: <span style="margin-left: 10px; color: black;font-weight: normal;"> {{item.product_id}}</span>  </div>
+          <div>Title: <span style="margin-left: 10px; color: black;font-weight: normal;"> {{item.title}}</span>  </div>
+          <div>Quantity:<span style="margin-left: 10px; color: black;font-weight: normal;"> {{item.quantity}}</span>  </div>
+          <div>Price:<span style="margin-left: 10px; color: black;font-weight: normal;"> {{item.price_set.shop_money.amount}} {{item.price_set.shop_money.currency_code}}</span>  </div>
+         <div>Discount: <span style="margin-left: 10px; color: black;font-weight: normal;"> {{item.total_discount_set.shop_money.amount}} {{item.total_discount_set.shop_money.currency_code}}</span>  </div>
+          <mat-divider style="margin-top: 20px; margin-bottom: 20px;" [inset]="true"></mat-divider>
         </div>
+        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">Total Amount: 
+          <span style="margin-left: 10px; color: black;font-weight: normal;"> 10000</span>
+        </div>
+        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">Total Discounts: 
+          <span style="margin-left: 10px; color: black;font-weight: normal;"> 10000</span>
+        </div>
+
+
+      </mat-card>
+
     </div>
-</mat-card>
+
+    <div gdArea="content">
+
+      <mat-card>
+        <h3 style="color: rgb(3, 3, 223);">Customer Information</h3>
+          <div>
+            <div >
+              <mat-icon style=" font-size: 15px;" class="example-icon" aria-hidden="false" >account_box</mat-icon>
+
+              {{customer.first_name}} {{customer.last_name}}
+            </div>
+            <div>
+              <mat-icon style=" font-size: 15px;" class="example-icon" aria-hidden="false" >mail</mat-icon>
+              <span (keyup)="changeValue(id, 'email', $event)" (blur)="updateList('email', $event)"
+              contenteditable="true">{{customer.email}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon style=" font-size: 15px;" class="example-icon" aria-hidden="false" >create</mat-icon></div>
+            <div>
+              <mat-icon style=" font-size: 15px;" class="example-icon" aria-hidden="false" >phone_android</mat-icon>
+
+              <span (keyup)="changeValue(id, 'phone', $event)" (blur)="updateList( 'phone', $event)"
+                contenteditable="true">{{customer.phone}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <mat-icon style=" font-size: 15px;" class="example-icon" aria-hidden="false">create</mat-icon>
+            </div>
+          </div>
+          <div>
+            <mat-icon style=" font-size: 15px;" class="example-icon" aria-hidden="false" >home</mat-icon>
+            address-1: {{customer.default_address.address1}} </div>
+          <div style="margin-left: 28px;">address-2: {{customer.default_address.address2}} </div>
+          <div style="margin-left: 28px;">{{customer.default_address.city}},{{customer.default_address.province}} </div>
+          <div style="margin-left: 28px;">{{customer.default_address.country}} </div>
+          <div style="margin-left: 28px;">{{customer.default_address.zip}}</div>
+
+
+
+      </mat-card>
+      <br>
+      <br>
+    <!-- </div>
+    <div gdArea="footer"> -->
+      <mat-card>
+        <h3 style="color: rgb(3, 3, 223);">Address Details</h3>
+        <div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+          <div fxLayout="column" fxFlex="0 1 calc(50% - 32px)" fxLayoutAlign="start start">
+            <p style="font-weight: bold;font-size: 17px; color: darkgray; padding: 2px;">Billing Address</p>
+              <div style="font-weight: bold;font-size: 16px; color: rgb(80, 77, 77)">{{billing_address.first_name}} {{billing_address.last_name}}</div>
+              <div>{{billing_address.address1}},</div>
+              <div>{{billing_address.city}}, {{billing_address.province}},</div>
+              <div>{{billing_address.country}}</div>
+              <div>{{billing_address.zip}}</div>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+
+          <div fxLayout="column" fxFlex="0 1 calc(50% - 32px)" fxLayoutAlign="start start">
+            <p style="font-weight: bold;font-size: 17px; color: darkgray; padding: 2px;">Shipping Address</p>
+              <div style="font-weight: bold;font-size: 16px; color: rgb(75, 73, 73)">{{shipping_address.first_name}} {{shipping_address.last_name}}</div>
+              <div>{{shipping_address.address1}},</div>
+              <div>{{shipping_address.city}}, {{shipping_address.province}},</div>
+              <div>{{shipping_address.country}}</div>
+              <div>{{shipping_address.zip}}</div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
   </div>
-</div>
 </mat-card>
