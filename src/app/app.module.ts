@@ -10,13 +10,15 @@ import { CustomMaterialModule } from './core/material.module';
 import {FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

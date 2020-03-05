@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   p: Number = 1;
-  count: Number = 9;
+  count: Number = 12;
   tests: any[] = [
     { 'id': 1, 'name': 'Clare Cornau', 'phoneno': '(815) 6180492', 'email': 'ccornau0@bigcartel.com', 'gender': 'Female', 'nationality': 'Somalia' },
     { 'id': 2, 'name': 'Edouard Elsmore', 'phoneno': '(507) 3119958', 'email': 'eelsmore1@goo.gl', 'gender': 'Male', 'nationality': 'United States' },
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit {
     { 'id': 20, 'name': 'Gwendolyn Mordon', 'phoneno': '(474) 3068249', 'email': 'gmordonj@uiuc.edu', 'gender': 'Female', 'nationality': 'Greece' }
   ]
 
-  constructor() {
+  constructor(private readonly router:Router) {
    
    }
 
@@ -45,6 +46,10 @@ export class DashboardComponent implements OnInit {
     else{
       return false
     }
+  }
+
+  order(){
+    this.router.navigate(['order'])
   }
  
 }

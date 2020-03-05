@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { MatInputModule } from '@angular/material/input';
         MatTableModule,
         MatMenuModule,
         MatIconModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatDividerModule
     ],
     exports: [
         CommonModule,
@@ -33,7 +35,8 @@ import { MatInputModule } from '@angular/material/input';
         MatTableModule,
         MatMenuModule,
         MatIconModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatDividerModule
     ],
 })
 export class CustomMaterialModule { }

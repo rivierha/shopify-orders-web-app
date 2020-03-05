@@ -1,0 +1,78 @@
+<p style="margin-top: 150px;"></p>
+<mat-card style="padding: 20px;margin: 30px;">
+<div 
+  gdAreas="header header | side content | footer footer"
+  gdGap="16px"
+  gdRows="auto auto auto">
+  <div gdArea="header">
+   <h1 style="color: rgb(107, 106, 106);"> Order #1</h1>
+   
+   </div>
+  <div gdArea="side">
+    <mat-card>
+        <h3 style="color: rgb(3, 3, 223);">Products</h3>
+        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">
+
+        <div>Id: </div>
+        <div>Title</div>
+        <div>Quantity</div>
+        <div>Price</div>
+        <div>Discount</div>
+        <mat-divider style="margin-top: 20px; margin-bottom: 20px;" [inset]="true"></mat-divider>
+
+        <div>Id: </div>
+        <div>Title</div>
+        <div>Quantity</div>
+        <div>Price</div>
+        <div>Discount</div>
+        <mat-divider style="margin-top: 20px; margin-bottom: 20px;" [inset]="true"></mat-divider>
+        <div>Total Amount: </div>
+        <div>Total Discounts: </div>
+
+    </div>
+
+    </mat-card>
+    
+   </div>
+   
+  <div gdArea="content">
+
+    <mat-card>
+        <h3 style="color: rgb(3, 3, 223);">Customer Information</h3>
+        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">
+          
+        <div>NAME: </div>
+        <p>PHONE:   <button mat-stroked-button color="primary">Update</button>
+        </p>
+        <p>EMAIL:   <button mat-stroked-button color="primary">Update</button>
+        </p>
+        <p>NATIONALITY:</p>
+        </div>
+
+    </mat-card>
+
+  </div>
+  <div gdArea="footer">
+      <mat-card>
+    <h3 style="color: rgb(3, 3, 223);">Address Details</h3>
+    <div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+        <div fxLayout="column" fxFlex="0 1 calc(50% - 32px)" fxLayoutAlign="start start">
+            
+            <p style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;">Billing Address</p>
+            <ul>
+                <li  style="font-weight: bold;font-size: 15px; color: rgb(109, 107, 107)">Name</li>
+                <li>Name</li><li>Name</li><li>Name</li><li>Name</li><li>Name</li>
+            </ul>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <div style="font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;" fxFlex="0 1 calc(50% - 32px)">
+            
+            <p>Shipping Address</p>
+
+        </div>
+    </div>
+</mat-card>
+  </div>
+</div>
+</mat-card>

@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0" class="head">
+<div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0" class="head" style="margin-top: 100px;">
     <div *ngIf="noOrder()" style="margin: 200px; color: rgb(37, 1, 194);;">
         <h1>No orders received yet!!</h1>
     </div>
@@ -22,7 +22,7 @@
                 <p>NATIONALITY: {{test.nationality}}</p>
             </mat-card-content>
             <mat-card-actions fxLayoutAlign="center center">
-                <button mat-raised-button (click)="login()">View Order Details</button>
+                <button mat-raised-button (click)="order()">View Order Details</button>
             </mat-card-actions>
     </mat-card>
 </div>
