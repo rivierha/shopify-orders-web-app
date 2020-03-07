@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderComponent } from './order/order.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { OrderComponent } from './order/order.component';
     FormsModule,
     CustomMaterialModule,
     FlexLayoutModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

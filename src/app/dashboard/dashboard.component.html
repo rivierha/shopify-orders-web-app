@@ -3,26 +3,26 @@
         <h1>No orders received yet!!</h1>
     </div>
     <mat-card class="item" fxFlex="0 1 calc(20% - 32px)"
-        *ngFor="let test of tests | paginate: { itemsPerPage: count, currentPage: p }">
+        *ngFor="let order of orders | paginate: { itemsPerPage: count, currentPage: p }">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title style="color: rgb(0, 69, 196); font-weight: bold;">
-                Order: {{test.id}}
+                Order: {{order.order_number}}
             </mat-card-title>
-            <mat-card-subtitle style="color: rgb(0, 69, 196); font-weight: bold;">ITEM NAME: {{test.name}}</mat-card-subtitle>
+            <mat-card-subtitle style="color: rgb(0, 69, 196); font-weight: bold;">{{order.email}}</mat-card-subtitle>
         </mat-card-header>
         
         <img class="image" mat-card-image src="https://htmlemail.io/img/blog-shopify.jpg" alt="Photo of a Shiba Inu">
            
             <mat-card-content>
-                <div>NAME: {{test.name}}</div>
-                <div>GENDER: {{test.gender}}</div>
-                <div>PHONENO: {{test.phoneno}}</div>
-                <div>EMAIL: {{test.email}}</div>
-                <div>NATIONALITY: {{test.nationality}}</div>
+                <div style="font-weight: bold;font-size: 17px; color: rgb(4, 74, 204); padding: 2px;" >Date: <span style="margin-left: 20px;">{{order.order_createdAt}}</span></div>
+                <div>Total items: <span>{{order.line_items.length}}</span></div>
+                <div>Status: <span>{{order.fulfillment_status}}</span></div>
+                <div>Amount: <span>{{order.total_price_set.shop_money.amount}} {{order.total_price_set.shop_money.currency_code}}</span></div>
+                <div>Discount: <span>{{order.total_discount_set.shop_money.amount}} {{order.total_discount_set.shop_money.currency_code}}</span></div>
             </mat-card-content>
             <mat-card-actions fxLayoutAlign="center center">
-                <button mat-raised-button (click)="order()">View Order Details</button>
+                <button mat-raised-button (click)="navigate(order._id)">View Order Details</button>
             </mat-card-actions>
     </mat-card>
 </div>
