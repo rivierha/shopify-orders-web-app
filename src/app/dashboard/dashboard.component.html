@@ -1,31 +1,59 @@
-<div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0" class="head" style="margin-top: 100px;">
-    <div *ngIf="noOrder()" style="margin: 200px; color: rgb(37, 1, 194);;">
-        <h1>No orders received yet!!</h1>
-    </div>
-    <mat-card class="item" fxFlex="0 1 calc(20% - 32px)"
-        *ngFor="let order of orders | paginate: { itemsPerPage: count, currentPage: p }">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title style="color: rgb(0, 69, 196); font-weight: bold;">
-                Order: {{order.order_number}}
-            </mat-card-title>
-            <mat-card-subtitle style="color: rgb(0, 69, 196); font-weight: bold;">{{order.email}}</mat-card-subtitle>
-        </mat-card-header>
-        
-        <img class="image" mat-card-image src="https://htmlemail.io/img/blog-shopify.jpg" alt="Photo of a Shiba Inu">
-           
-            <mat-card-content>
-                <div style="font-weight: bold;font-size: 17px; color: rgb(4, 74, 204); padding: 2px;" >Date: <span style="margin-left: 20px;">{{order.order_createdAt}}</span></div>
-                <div>Total items: <span>{{order.line_items.length}}</span></div>
-                <div>Status: <span>{{order.fulfillment_status}}</span></div>
-                <div>Amount: <span>{{order.total_price_set.shop_money.amount}} {{order.total_price_set.shop_money.currency_code}}</span></div>
-                <div>Discount: <span>{{order.total_discount_set.shop_money.amount}} {{order.total_discount_set.shop_money.currency_code}}</span></div>
-            </mat-card-content>
-            <mat-card-actions fxLayoutAlign="center center">
-                <button mat-raised-button (click)="navigate(order._id)">View Order Details</button>
-            </mat-card-actions>
-    </mat-card>
+<div fxLayoutAlign="center">
+<mat-table fxFlex="0 1 90%" class="lessons-table mat-elevation-z8" [dataSource]="dataSource | paginate: { itemsPerPage: count, currentPage: p }" class="top">
+
+    <ng-container matColumnDef="order_number">
+        <mat-header-cell *matHeaderCellDef>#Order No</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">{{lesson.order_number}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="order_createdAt">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let order">{{order.order_createdAt.substring(0,10)}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="fulfillment_status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let order">{{order.fulfillment_status}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="line_items">
+        <mat-header-cell *matHeaderCellDef>Items</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let order">{{order.line_items.length}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="total_price_set">
+        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let order">{{order.total_price_set.shop_money.amount}} {{order.total_price_set.shop_money.currency_code}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="total_discount_set">
+        <mat-header-cell *matHeaderCellDef>Discount</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let order">{{order.total_discount_set.shop_money.amount}} {{order.total_discount_set.shop_money.currency_code}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let order">
+                  <button style="background-color: rgb(0, 209, 63);" mat-raised-button (click)="navigate(order._id)">View Order Details</button>
+
+                </mat-cell>
+
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
 </div>
 <div fxLayout="column" fxLayoutAlign="center center">
     <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
-</div>
+</div> 

@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
   constructor(private router: Router){}
   
   routeCheck() {
-    if (this.router.url == '/dashboard') {
+    if (this.router.url != '/login') {
         this.home = true;
     } else { 
       this.home = false;

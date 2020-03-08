@@ -8,12 +8,13 @@ html, body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
- .navbar{
+.navbar{
     position: fixed;
     top: 0px;
     z-index: 999;
     max-height: 10vh;
 }
+
 .Login_Form {
     box-sizing: border-box !important;
     flex: 1 1 50% !important;
@@ -24,10 +25,33 @@ html, body {
 .item {
     margin: 1rem;
 }
-.mat-card.mat-card-header{
-    color: rgb(22, 3, 189);
-}
 
 .mat-button{
     font-size: medium;
+}
+
+.top{
+    margin-top: 150px
+}
+
+.h3{
+    color: rgb(22, 3, 189)
+}
+
+.h1{
+    color: rgb(107, 106, 106);
+    margin-left: 30px;
+}
+
+.heading{
+    font-weight: bold;font-size: 15px; color: darkgray; padding: 2px;
+}
+
+.des{
+    margin-left: 10px; color: black;font-weight: normal;
+}
+
+.mat-divider{
+    margin-top: 20px !important;
+     margin-bottom: 20px !important;
 }

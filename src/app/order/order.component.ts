@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-order',
@@ -12,18 +14,15 @@ export class OrderComponent implements OnInit {
   orders = []
   customer: any
   tests: any
+  destroy$: Subject<boolean> = new Subject<boolean>();
+
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
   
   async ngOnInit() {
     let id: any = this.route.snapshot.params.id;
-    console.log(id, 'ID')
     await this.dataService.getOrder(id).subscribe(async (data: any)=>{
-      console.log(data, '1');
       this.orders.push(data);
-      // this.tests = this.order.line_items
-      // console.log(this.tests, 'D')
       await this.dataService.getCustomer(this.orders[0].customer_id).subscribe((data: any)=>{
-        console.log(data, '2');
         this.customer = data;
       }) 
     })  
@@ -36,18 +35,17 @@ export class OrderComponent implements OnInit {
   }
 
   async updateList(id: number, property: string, event: any) {
-    // const editField = event.target.textContent;
-    console.log("Fuck")
     let data = {
       [property]: this.editField
     }
-    await this.dataService.updateCustomer(id, data).subscribe((data: any)=>{
-      console.log(data, '2');
+    await this.dataService.updateCustomer(id, data).pipe(takeUntil(this.destroy$)).subscribe((data: any)=>{
       this.customer = data.customer;
     }) 
-    // this.customer[property] = this.editField;
-    // console.log(this.customer[property])
-    console.log(this.customer)
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
 }
