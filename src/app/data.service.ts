@@ -8,9 +8,9 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class DataService {
 
-  private REST_API_SERVER = "http://localhost:3000/api/v1";
+  private REST_API_SERVER = "https://shopify-task.herokuapp.com/api/v1";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpsClient: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -26,21 +26,21 @@ export class DataService {
   }
 
   public getAllOrders() {
-    return this.httpClient.get(`${this.REST_API_SERVER}/orders`).pipe(catchError(this.handleError));
+    return this.httpsClient.get(`${this.REST_API_SERVER}/orders`).pipe(catchError(this.handleError));
   }
 
   public getCustomer(id) {
-    return this.httpClient.get(`${this.REST_API_SERVER}/customers/${id}`).pipe(catchError(this.handleError));
+    return this.httpsClient.get(`${this.REST_API_SERVER}/customers/${id}`).pipe(catchError(this.handleError));
   }
 
 
   public getOrder(id) {
-    return this.httpClient.get(`${this.REST_API_SERVER}/orders/${id}`).pipe(catchError(this.handleError));
+    return this.httpsClient.get(`${this.REST_API_SERVER}/orders/${id}`).pipe(catchError(this.handleError));
   }
 
   public updateCustomer(id, body) {
     console.log(id, body)
-    return this.httpClient.put(`${this.REST_API_SERVER}/customers/${id}`, body).pipe(catchError(this.handleError))
+    return this.httpsClient.put(`${this.REST_API_SERVER}/customers/${id}`, body).pipe(catchError(this.handleError))
   }
 
 }

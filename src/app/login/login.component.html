@@ -13,9 +13,6 @@
                     <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password"
                         required>
                 </mat-form-field>
-
-            <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-      
         <mat-card-actions fxLayout="column" fxLayoutAlign="center center">
             <button  mat-raised-button color="primary" (click)="login()">Continue <mat-icon>arrow_forward</mat-icon></button>
         </mat-card-actions>

@@ -3,25 +3,19 @@
     <mat-icon class="example-icon" aria-hidden="false">shopping_cart</mat-icon>
     <span style="font-weight: bolder"> Shopify</span>
     <span class="example-spacer"></span>
-    <button mat-button>About</button>
-    <button mat-button>Contact</button>
+    <a href="https://www.shopify.com/"><button mat-button style="color: azure;">About</button></a>
+    <a href="https://help.shopify.com/en"><button mat-button style="color: azure;">Contact</button> </a>
     <button mat-button *ngIf="routeCheck()" (click)="logout()"> Logout</button>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
+      <a href="https://bazingatestapp.myshopify.com/">
+        <button mat-menu-item>
+          <mat-icon>shop</mat-icon>
+          Go to store
+        </button>
+      </a>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
